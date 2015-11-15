@@ -1,0 +1,17 @@
+﻿<Page x:Class="xBindWithConverter.MainPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="using:xBindWithConverter" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <Page.DataContext>
+        <local:MyViewModel />
+    </Page.DataContext>
+    <Page.Resources>
+        <local:ItemConvert x:Key="ItemConvert" />
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView ItemsSource="{x:Bind ViewModel.MyList}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Item">
+                    <TextBlock Text="{x:Bind Converter={StaticResource ItemConvert}}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
